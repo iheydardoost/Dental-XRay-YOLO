@@ -9,8 +9,8 @@ import sys
 seed = 10  # For reproducibility
 test_percent = 10
 valid_percent = 10
-dataset_dir = 'D:/iman_heydardoost/research_papers/dental_paper_1/data/original'  # Root directory
-target_dir = 'D:/iman_heydardoost/research_papers/dental_paper_1/data/a_10_10'
+dataset_dir = '../data/original'  # Root directory
+target_dir = '../data/a_10_10'
 default_max_workers = 4  # For ThreadPoolExecutor; adjust based on CPU
 
 # Paths to original images and labels

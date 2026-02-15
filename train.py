@@ -3,11 +3,11 @@
 # =========================
 
 # --- Reproducibility ---
-seed = 42
+seed = 77
 
 # --- Dataset ---
-dataset_dir = "D:/iman_heydardoost/research_papers/dental_paper_1/data/a_10_10"
-dataset_yaml_path = "D:/iman_heydardoost/research_papers/dental_paper_1/data/dataset.yaml"
+dataset_dir = "../data/a_10_10"
+dataset_yaml_path = "../data/dataset.yaml"
 
 # --- Classes ---
 # IMPORTANT: order must match your label indices
@@ -31,20 +31,20 @@ class_names = [
 model_name = "yolov8n.pt"         # size: n / s / m / l / x
 img_size = 640
 
+# --- Output ---
+project_name = "dental_yolo"
+experiment_name = "yolov8n_training"
+
 # --- Training ---
-epochs = 150
-batch_size = 4
-learning_rate = 0.001
-optimizer = "AdamW"         # SGD | Adam | AdamW
-workers = 4
+epochs = 100
+batch_size = 16
+learning_rate = 0.01
+optimizer = "SGD"         # SGD | Adam | AdamW
+workers = 8
 
 # --- Hardware ---
 device = "0"                  # 0 / 1 = GPU, "cpu" for CPU
 amp = True                  # mixed precision (recommended)
-
-# --- Output ---
-project_name = "dental_yolo"
-experiment_name = "yolov8_training"
 
 # =========================
 # ===== IMPLEMENTATION ====
@@ -104,7 +104,16 @@ def train():
         A.Blur(blur_limit=7, p=0.5),
         A.GaussNoise(var_limit=(10.0, 50.0), p=0.3),
         A.CLAHE(clip_limit=4.0, p=0.5),
-        A.RandomBrightnessContrast(brightness_limit=0.2, contrast_limit=0.2, p=0.5)
+        A.RandomBrightnessContrast(brightness_limit=0.2, contrast_limit=0.2, p=0.5),
+        A.HorizontalFlip(p=0.5),
+        A.VerticalFlip(p=0.5),
+        A.CoarseDropout(
+            num_holes_range=(1, 5),
+            hole_height_range=(10, 40),
+            hole_width_range=(10, 40),
+            fill_value=0,
+            p=0.5
+        )
     ]
 
     print("[INFO] Starting training...")
