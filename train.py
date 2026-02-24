@@ -6,7 +6,7 @@
 seed = 77
 
 # --- Dataset ---
-dataset_dir = "../data/a_10_10"
+dataset_dir = "../data/a_5_5"
 dataset_yaml_path = "../data/dataset.yaml"
 
 # --- Classes ---
@@ -28,17 +28,17 @@ class_names = [
 
 # --- Model ---
 # all .pt are pretrained with COCO weights
-model_name = "yolov8n.pt"         # size: n / s / m / l / x
+model_name = "yolov8x.pt"         # size: n / s / m / l / x
 img_size = 640
 
 # --- Output ---
 project_name = "dental_yolo"
-experiment_name = "yolov8n_training"
+experiment_name = "yolov8x_train_6"
 
 # --- Training ---
 epochs = 100
 batch_size = 16
-learning_rate = 0.01
+learning_rate = 0.005
 optimizer = "SGD"         # SGD | Adam | AdamW
 workers = 8
 

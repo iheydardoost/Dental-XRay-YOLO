@@ -7,10 +7,10 @@ import sys
 
 # Set parameters (customize as needed)
 seed = 10  # For reproducibility
-test_percent = 10
-valid_percent = 10
+test_percent = 5
+valid_percent = 5
 dataset_dir = '../data/original'  # Root directory
-target_dir = '../data/a_10_10'
+target_dir = '../data/a_5_5'
 default_max_workers = 4  # For ThreadPoolExecutor; adjust based on CPU
 
 # Paths to original images and labels
