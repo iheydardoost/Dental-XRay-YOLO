@@ -28,7 +28,10 @@ class_names = [
 
 # --- Model ---
 # all .pt are pretrained with COCO weights
-model_name = "yolov8x.pt"         # size: n / s / m / l / x
+# version 8     size: n / s / m / l / x
+# version 9     size: t / s / m / c / e
+# version 10    size: n / s / m / b / l / x
+model_name = "yolov8x.pt"
 img_size = 640
 
 # --- Output ---
